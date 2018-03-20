@@ -44,12 +44,12 @@ local function theTotalCost(event)
 	elseif costSize ~= 'Large' and costSize ~= 'Extra Large' then
 		result = display.newText('Please input a valid size Large or Extra Large', 1024, 900, native.SystemFont, 100)
 	elseif costSize == 'Extra Large' and costToppings >= 1 then
-		subtotal = 10.0 + (1.0+(costToppings*0.75))
+		subtotal = 10.0 + (0.25+(costToppings*0.75))
 		tax = math.floor(subtotal * 0.13)
 		total = subtotal + tax
 		result = display.newText('   Subtotal: $'..subtotal..'     Tax: $'..tax..'      Total: $'..total, 1020, 900, native.SystemFont, 100)
 	elseif costSize == 'Large' and costToppings >= 1 then
-		subtotal = 6.0 + (1.0+(costToppings*0.75))
+		subtotal = 6.0 + (0.25+(costToppings*0.75))
 		tax = math.floor(subtotal * 0.13)
 		total = subtotal + tax
 		result = display.newText('   Subtotal: $'..subtotal..'     Tax: $'..tax..'      Total: $'..total, 1015, 900, native.SystemFont, 100)
