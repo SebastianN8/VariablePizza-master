@@ -29,6 +29,9 @@ myButton.x = 1800
 myButton.y = 530
 myButton.id = 'On button' 
 
+-- Variable for statement
+local result = display.newText('', 1024, 900, native.SystemFont, 100)
+
 -- My Function
 local function theTotalCost(event)
 	-- Variables
@@ -36,23 +39,22 @@ local function theTotalCost(event)
 	local costToppings = tonumber(myToppingsTextField.text)
 	local subtotal
 	local tax
-	local total
-	local result 
+	local total 
 	-- Process
 	if costToppings < 1 or costToppings > 4 then
-		result = display.newText('Please input a valid amount of Toppings\nBetween 1 and 4', 1024, 900, native.SystemFont, 100) 
+		result.text = ('Please input a valid amount of Toppings\nBetween 1 and 4') 
 	elseif costSize ~= 'Large' and costSize ~= 'Extra Large' then
-		result = display.newText('Please input a valid size Large or Extra Large', 1024, 900, native.SystemFont, 100)
+		result.text = ('Please input a valid size Large or Extra Large')
 	elseif costSize == 'Extra Large' and costToppings >= 1 then
 		subtotal = 10.0 + (0.25+(costToppings*0.75))
-		tax = math.floor(subtotal * 0.13)
+		tax = (math.floor((subtotal * 0.13)*100))/100
 		total = subtotal + tax
-		result = display.newText('   Subtotal: $'..subtotal..'     Tax: $'..tax..'      Total: $'..total, 1020, 900, native.SystemFont, 100)
+		result.text = ('   Subtotal: $'..subtotal..'     Tax: $'..tax..'      Total: $'..total)
 	elseif costSize == 'Large' and costToppings >= 1 then
 		subtotal = 6.0 + (0.25+(costToppings*0.75))
-		tax = math.floor(subtotal * 0.13)
+		tax = (math.floor((subtotal * 0.13)*100))/100
 		total = subtotal + tax
-		result = display.newText('   Subtotal: $'..subtotal..'     Tax: $'..tax..'      Total: $'..total, 1015, 900, native.SystemFont, 100)
+		result.text = ('   Subtotal: $'..subtotal..'     Tax: $'..tax..'      Total: $'..total)
 	end
 	return true 
 end
